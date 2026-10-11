@@ -11,9 +11,21 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class CLITests(unittest.TestCase):
     def call(self, *args):
-               env = dict(os.environ, PYTHONPATH=str(ROOT / "src"), PYTHONIOENCODING="utf-8")
-        return subprocess.run([sys.executable, "-m", "siteaudit_kit", *map(str, args)],
-                              cwd=ROOT, env=env, text=True, encoding="utf-8", capture_output=True, timeout=10)
+        # Match the child's output to the UTF-8 decoder, including Windows pipes.
+        env = dict(
+            os.environ,
+            PYTHONPATH=str(ROOT / "src"),
+            PYTHONIOENCODING="utf-8",
+        )
+        return subprocess.run(
+            [sys.executable, "-m", "siteaudit_kit", *map(str, args)],
+            cwd=ROOT,
+            env=env,
+            text=True,
+            encoding="utf-8",
+            capture_output=True,
+            timeout=10,
+        )
 
     def test_clean_cli(self):
         result = self.call("examples/clean.html")
