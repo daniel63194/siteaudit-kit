@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class CLITests(unittest.TestCase):
     def call(self, *args):
-        env = dict(os.environ, PYTHONPATH=str(ROOT / "src"))
+               env = dict(os.environ, PYTHONPATH=str(ROOT / "src"), PYTHONIOENCODING="utf-8")
         return subprocess.run([sys.executable, "-m", "siteaudit_kit", *map(str, args)],
                               cwd=ROOT, env=env, text=True, encoding="utf-8", capture_output=True, timeout=10)
 
