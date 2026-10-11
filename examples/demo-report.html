@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>SiteAudit Kit report</title><style>
+:root{font-family:system-ui,sans-serif;color:#18261f;background:#f4f5ef;line-height:1.55}
+body{margin:0}main{max-width:920px;margin:auto;padding:48px 24px}
+.label{font-size:12px;letter-spacing:2px;font-weight:700;color:#3d6651}
+h1{font-size:clamp(32px,5vw,48px);line-height:1.15;letter-spacing:-1.5px;margin:16px 0}
+.source{overflow-wrap:anywhere;color:#46584b}.stats{display:flex;gap:32px;padding:24px 0;border-top:1px solid #cfd6cb;border-bottom:1px solid #cfd6cb;margin:28px 0}
+.stats b{display:block;font-size:32px;line-height:1.1}.stats span{font-size:13px}
+.finding{background:#fff;padding:24px;margin:16px 0;border:1px solid #d9dfd5;border-left:4px solid #9baf9f}
+.error{border-left-color:#bc3b2a}.warning{border-left-color:#ad791b}
+.meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:#59645b}
+h2{font-size:21px;line-height:1.3}p{margin:12px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f5ef;padding:12px;font-size:13px}
+a{color:#215d3c}.fix{color:#344f3d}footer{font-size:13px;color:#5c675d;margin-top:32px}
+</style></head><body><main><div class="label">SITEAUDIT KIT / STATIC AUDIT</div>
+<h1>Small checks.<br>Actionable findings.</h1><p class="source">examples/problematic.html</p>
+<div class="stats"><div><b>3</b><span>info</span></div><div><b>5</b><span>warning</span></div><div><b>9</b><span>error</span></div><div><b>17</b><span>new findings</span></div></div>
+<article class="finding error">
+<div class="meta"><span>A11Y001 · accessibility</span>
+<span>ERROR · NEW · line 2</span></div>
+<h2>Missing document language</h2><p>The html element has no non-empty lang attribute.</p>
+<pre><code>&lt;html&gt;Shop Our plants Latest arrivals Subscribe</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Set &lt;html lang=&quot;en&quot;&gt; (or the actual language) to help assistive technology pronounce content.</p>
+<a href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html" rel="noreferrer">Read the reference ↗</a></article><article class="finding error">
+<div class="meta"><span>A11Y002 · accessibility</span>
+<span>ERROR · NEW · line 12</span></div>
+<h2>Image has no alt attribute</h2><p>The image has no alt attribute.</p>
+<pre><code>&lt;img src=&quot;http://example.org/plant.jpg&quot;&gt;</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Add meaningful alt text, or alt=&quot;&quot; for a purely decorative image.</p>
+<a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html" rel="noreferrer">Read the reference ↗</a></article><article class="finding error">
+<div class="meta"><span>A11Y003 · accessibility</span>
+<span>ERROR · NEW · line 14</span></div>
+<h2>Button has no detected accessible name</h2><p>The static markup provides no detected name for this button.</p>
+<pre><code>&lt;button&gt;</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Add visible button text, aria-label, or aria-labelledby pointing to descriptive text.</p>
+<a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html" rel="noreferrer">Read the reference ↗</a></article><article class="finding error">
+<div class="meta"><span>A11Y004 · accessibility</span>
+<span>ERROR · NEW · line 13</span></div>
+<h2>Link has no detected accessible name</h2><p>The link contains no detected descriptive text or name.</p>
+<pre><code>&lt;a href=&quot;/catalog&quot;&gt;</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Add descriptive link text or an equivalent accessible name.</p>
+<a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html" rel="noreferrer">Read the reference ↗</a></article><article class="finding error">
+<div class="meta"><span>A11Y005 · accessibility</span>
+<span>ERROR · NEW · line 16</span></div>
+<h2>Form control has no detected label</h2><p>No non-empty associated label or name was found.</p>
+<pre><code>&lt;input id=&quot;email&quot; placeholder=&quot;Email address&quot; type=&quot;email&quot;&gt;</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Associate a &lt;label for=&quot;id&quot;&gt; with the control, wrap it in a label, or provide aria-labelledby/aria-label.</p>
+<a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html" rel="noreferrer">Read the reference ↗</a></article><article class="finding error">
+<div class="meta"><span>A11Y005 · accessibility</span>
+<span>ERROR · NEW · line 17</span></div>
+<h2>Form control has no detected label</h2><p>No non-empty associated label or name was found.</p>
+<pre><code>&lt;input id=&quot;email&quot; type=&quot;text&quot;&gt;</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Associate a &lt;label for=&quot;id&quot;&gt; with the control, wrap it in a label, or provide aria-labelledby/aria-label.</p>
+<a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html" rel="noreferrer">Read the reference ↗</a></article><article class="finding warning">
+<div class="meta"><span>A11Y006 · accessibility</span>
+<span>WARNING · NEW · line 11</span></div>
+<h2>Skipped heading level</h2><p>Heading level jumps from h1 to h3.</p>
+<pre><code>&lt;h3&gt;Latest arrivals</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Review the heading hierarchy; a jump can make the page harder to navigate.</p>
+<a href="https://www.w3.org/WAI/tutorials/page-structure/headings/" rel="noreferrer">Read the reference ↗</a></article><article class="finding warning">
+<div class="meta"><span>HTML001 · html</span>
+<span>WARNING · NEW · line 17</span></div>
+<h2>Duplicate element ID</h2><p>The ID &#x27;email&#x27; appears more than once.</p>
+<pre><code>&lt;input id=&quot;email&quot; type=&quot;text&quot;&gt;</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Make IDs unique and update labels, fragments, and ARIA references that point to them.</p>
+<a href="https://html.spec.whatwg.org/multipage/dom.html#the-id-attribute" rel="noreferrer">Read the reference ↗</a></article><article class="finding warning">
+<div class="meta"><span>HTML002 · html</span>
+<span>WARNING · NEW · line 1</span></div>
+<h2>Missing responsive viewport</h2><p>No non-empty viewport meta tag was found in the head.</p>
+<pre><code>document</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Add &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;.</p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag" rel="noreferrer">Read the reference ↗</a></article><article class="finding info">
+<div class="meta"><span>PERF001 · performance</span>
+<span>INFO · NEW · line 12</span></div>
+<h2>Image dimensions are not declared in HTML</h2><p>No positive integer width/height pair was found in the source.</p>
+<pre><code>&lt;img src=&quot;http://example.org/plant.jpg&quot;&gt;</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Add width and height, or reserve aspect-ratio in CSS. This check cannot inspect external CSS.</p>
+<a href="https://web.dev/articles/optimize-cls" rel="noreferrer">Read the reference ↗</a></article><article class="finding warning">
+<div class="meta"><span>PERF002 · performance</span>
+<span>WARNING · NEW · line 6</span></div>
+<h2>Potentially blocking script in head</h2><p>A classic external script in head has neither defer nor async.</p>
+<pre><code>&lt;script src=&quot;http://cdn.example.org/widgets.js&quot;&gt;</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Use defer or async when safe, a module script, or move the script after the content.</p>
+<a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element" rel="noreferrer">Read the reference ↗</a></article><article class="finding error">
+<div class="meta"><span>SEC002 · security</span>
+<span>ERROR · NEW · line 6</span></div>
+<h2>HTTP resource on an HTTPS page</h2><p>The page embeds an HTTP resource.</p>
+<pre><code>&lt;script src=&quot;http://cdn.example.org/widgets.js&quot;&gt; resource=http://cdn.example.org/widgets.js</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Replace the insecure embedded resource URL with HTTPS or a same-origin relative URL.</p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content" rel="noreferrer">Read the reference ↗</a></article><article class="finding error">
+<div class="meta"><span>SEC002 · security</span>
+<span>ERROR · NEW · line 12</span></div>
+<h2>HTTP resource on an HTTPS page</h2><p>The page embeds an HTTP resource.</p>
+<pre><code>&lt;img src=&quot;http://example.org/plant.jpg&quot;&gt; resource=http://example.org/plant.jpg</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Replace the insecure embedded resource URL with HTTPS or a same-origin relative URL.</p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content" rel="noreferrer">Read the reference ↗</a></article><article class="finding error">
+<div class="meta"><span>SEC003 · security</span>
+<span>ERROR · NEW · line 15</span></div>
+<h2>Form submits over HTTP</h2><p>The form&#x27;s resolved action uses HTTP.</p>
+<pre><code>&lt;form action=&quot;http://example.org/subscribe&quot; method=&quot;post&quot;&gt;Subscribe</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Deliver the page and submit the form over HTTPS.</p>
+<a href="https://html.spec.whatwg.org/multipage/forms.html#attr-fs-action" rel="noreferrer">Read the reference ↗</a></article><article class="finding info">
+<div class="meta"><span>SEO002 · seo</span>
+<span>INFO · NEW · line 5</span></div>
+<h2>Title outside the suggested length</h2><p>The title contains 4 characters.</p>
+<pre><code>&lt;title&gt;Shop</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Review the title for clarity; 15–70 characters is only a heuristic, not a search-engine limit.</p>
+<a href="https://developers.google.com/search/docs/appearance/title-link" rel="noreferrer">Read the reference ↗</a></article><article class="finding warning">
+<div class="meta"><span>SEO003 · seo</span>
+<span>WARNING · NEW · line 1</span></div>
+<h2>Missing meta description</h2><p>No non-empty meta description was found in the head.</p>
+<pre><code>document</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Add a concise, page-specific &lt;meta name=&quot;description&quot; content=&quot;...&quot;&gt;.</p>
+<a href="https://developers.google.com/search/docs/appearance/snippet" rel="noreferrer">Read the reference ↗</a></article><article class="finding info">
+<div class="meta"><span>SEO004 · seo</span>
+<span>INFO · NEW · line 1</span></div>
+<h2>Missing canonical URL</h2><p>The document has no canonical link in the head.</p>
+<pre><code>document</code></pre>
+<p class="fix"><strong>Suggested fix</strong><br>Consider a &lt;link rel=&quot;canonical&quot; href=&quot;https://...&quot;&gt; when alternate URLs serve the same content.</p>
+<a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" rel="noreferrer">Read the reference ↗</a></article>
+<footer>24 checks ran. Skipped/ignored: none.<br>
+Static heuristics only. This report does not execute JavaScript, measure page speed, prove security, or certify WCAG compliance.</footer>
+</main></body></html>

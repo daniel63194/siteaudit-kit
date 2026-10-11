@@ -1,0 +1,48 @@
+name: SiteAudit Kit
+description: Evidence-based HTML audits with JSON, SARIF, HTML reports and baseline-aware CI gates.
+branding:
+  icon: check-circle
+  color: green
+inputs:
+  target:
+    description: Local HTML file or public HTTP(S) URL to audit.
+    required: true
+  format:
+    description: Output format (text, json, html, sarif).
+    default: sarif
+  output:
+    description: Report file path.
+    default: siteaudit.sarif
+  fail-on:
+    description: Fail on new findings of this severity or above (none, info, warning, error).
+    default: error
+  baseline:
+    description: Optional baseline JSON file path.
+    default: ''
+  ignore:
+    description: Comma-separated rule IDs to skip.
+    default: ''
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+      with:
+        python-version: '3.12'
+    - name: Install SiteAudit Kit
+      shell: bash
+      run: python -m pip install --no-deps "$GITHUB_ACTION_PATH"
+    - name: Audit HTML
+      shell: bash
+      env:
+        SITEAUDIT_TARGET: ${{ inputs.target }}
+        SITEAUDIT_FORMAT: ${{ inputs.format }}
+        SITEAUDIT_OUTPUT: ${{ inputs.output }}
+        SITEAUDIT_FAIL_ON: ${{ inputs.fail-on }}
+        SITEAUDIT_BASELINE: ${{ inputs.baseline }}
+        SITEAUDIT_IGNORE: ${{ inputs.ignore }}
+      run: |
+        args=("$SITEAUDIT_TARGET" --format "$SITEAUDIT_FORMAT" --output "$SITEAUDIT_OUTPUT" --fail-on "$SITEAUDIT_FAIL_ON" --ignore "$SITEAUDIT_IGNORE")
+        if [[ -n "$SITEAUDIT_BASELINE" ]]; then
+          args+=(--baseline "$SITEAUDIT_BASELINE")
+        fi
+        python -m siteaudit_kit "${args[@]}"

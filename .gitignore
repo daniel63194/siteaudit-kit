@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.coverage
+htmlcov/
+report.html
+report.json
+siteaudit.sarif
+*.log

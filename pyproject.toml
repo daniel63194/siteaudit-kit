@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "siteaudit-kit"
+version = "0.1.0"
+description = "Evidence-based HTML audits for developers, CI, and AI agents. No runtime dependencies."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "SiteAudit Kit contributors"}]
+keywords = ["html", "accessibility", "seo", "sarif", "website-audit"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Software Development :: Quality Assurance",
+]
+
+[project.scripts]
+siteaudit = "siteaudit_kit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+siteaudit_kit = ["py.typed"]
